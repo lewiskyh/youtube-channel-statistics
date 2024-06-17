@@ -1,11 +1,14 @@
 import os
-from flask import current_app
 import googleapiclient.discovery
 from urllib.error import HTTPError
 from dotenv import load_dotenv
 import pandas as pd
 from datetime import datetime
 from matplotlib import pyplot as plt
+##Import Hiragino sans to display Japanese/Korean characters
+import matplotlib
+matplotlib.rcParams['font.family'] = 'Hiragino sans'
+
 
 MAX_TITLE_LENGTH = 30
 SPACE_FOR_DOTS = 3
@@ -15,7 +18,7 @@ API_KEY = os.getenv("YOUTUBE_API_KEY")
 youtube = googleapiclient.discovery.build("youtube", "v3", developerKey=API_KEY)
 
 if not API_KEY:
-    raise ValueError("No API key found. Please set the YOUTUBE_API_KEY environment variable.")
+    raise ValueError("No API key found. Please set the YOUTUBE_API_KEY environment variable in .env file.")
 
 ##function to retrieve all video IDs
 def get_video_ids(channel_id):
