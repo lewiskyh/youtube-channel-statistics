@@ -1,25 +1,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YouTube Analytics Dashboard</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <h1>YouTube Analytics Dashboard</h1>
-    <form method="post">
-        <input type="text" name="channel_id" placeholder="Enter YouTube Channel ID" required>
+    <form method="POST">
+        <label for="channel_id">Input Channel ID:</label>
+        <input type="text" id="channel_id" name="channel_id">
         <button type="submit">Fetch Data</button>
     </form>
-
+    {% if channel_details %}
+        <div class="channel-info">
+            <h2>Channel: {{ channel_details.channel_name }}</h2>
+            <p>Description: {{ channel_details.channel_description }}</p>
+            <p>Total Videos: {{ channel_details.total_videos }}</p>
+            <p>Total Views: {{ channel_details.total_views }}</p>
+            <p>Total Subscribers: {{ channel_details.total_subscribers }}</p>
+        </div>
+    {% endif %}
     {% if data %}
-        <h2>Video Data</h2>
-        <div>{{ data|safe }}</div>
-
-        <h2>Top 20 Most Viewed Videos</h2>
-        <img src="{{ url_for('static', filename='view_plot.png') }}" alt="Views Plot">
-
-        <h2>Top 20 Most Liked Videos</h2>
-        <img src="{{ url_for('static', filename='like_plot.png') }}" alt="Likes Plot">
+        <div class="plots">
+            <h3> Top10 Most Viewed Videos</h3>
+            <img src="{{ url_for('static', filename='views_plot.png') }}" alt="Views Plot">
+            <h3> Top10 Most Liked Videos</h3>
+            <img src="{{ url_for('static', filename='likes_plot.png') }}" alt="Likes Plot">
+        </div>
     {% endif %}
 </body>
 </html>
