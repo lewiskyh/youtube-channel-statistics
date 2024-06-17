@@ -113,7 +113,6 @@ def trim_title(track_name):
     else:
         return track_name[:(MAX_TITLE_LENGTH - SPACE_FOR_DOTS)] + "..."
 
-
 def save_data_plot(df, plot_type="views"):
     if plot_type == "views":
         top10_df = df.sort_values(by=['Views'], ascending=False)[:10]
