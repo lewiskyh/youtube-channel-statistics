@@ -7,8 +7,8 @@ from datetime import datetime
 from matplotlib import pyplot as plt
 ##Import Hiragino sans to display Japanese characters
 import matplotlib
-
 matplotlib.rcParams['font.family'] = 'Hiragino sans'
+matplotlib.use('Agg')
 
 MAX_TITLE_LENGTH = 30
 SPACE_FOR_DOTS = 3
