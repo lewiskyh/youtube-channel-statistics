@@ -1,6 +1,6 @@
 import os
 import googleapiclient.discovery
-from urllib.error import HTTPError
+from googleapiclient.errors import HttpError
 from dotenv import load_dotenv
 import pandas as pd
 from datetime import datetime
@@ -49,8 +49,10 @@ def get_video_ids(channel_id):
             else:
                 break
 
-    except HTTPError as error:
-        print(f"{error} has occurred")
+    except HttpError as error:
+        raise Exception (f"Http Error: {error}")
+    except Exception as error:
+        raise Exception(f"Error: {error}")
 
     return video_ids
 
@@ -67,14 +69,21 @@ def get_channel_details(channel_id):
     try:
         request = youtube.channels().list(part="snippet,statistics", id=channel_id)
         response = request.execute()
-        if response["items"]:
-            channel_details["channel_name"] = response["items"][0]["snippet"]["title"]
-            channel_details["total_subscribers"] = response["items"][0]["statistics"]["subscriberCount"]
-            channel_details["total_videos"] = response["items"][0]["statistics"]["videoCount"]
-            channel_details["total_views"] = response["items"][0]["statistics"]["viewCount"]
-            channel_details["channel_description"] = response["items"][0]["snippet"]["description"]
-    except HTTPError as error:
-        print(f"{error} has occurred")
+
+        if not response["items"]:
+            raise Exception(f"Channel {channel_id} not found.")
+
+        channel_details["channel_name"] = response["items"][0]["snippet"]["title"]
+        channel_details["total_subscribers"] = response["items"][0]["statistics"]["subscriberCount"]
+        channel_details["total_videos"] = response["items"][0]["statistics"]["videoCount"]
+        channel_details["total_views"] = response["items"][0]["statistics"]["viewCount"]
+        channel_details["channel_description"] = response["items"][0]["snippet"]["description"]
+
+    except HttpError as error:
+        raise Exception(f"Http Error: {error}")
+    except Exception as error:
+        raise Exception(f"Error: {error}")
+
     return channel_details
 
 
@@ -94,9 +103,8 @@ def get_video_stats(video_id):
             return [title, views, likes, upload_date]
         else:
             return ["N/A", 0, 0, "N/A"]
-    except HTTPError as error:
-        print(f"An error occurred: {error}")
-        return ["N/A", 0, 0, "N/A"]
+    except HttpError as error:
+        raise Exception(f"Http Error: {error}")
 
 
 ##Create dataframe by combining the data and the columns

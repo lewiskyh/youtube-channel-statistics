@@ -30,6 +30,9 @@ form {
     margin-bottom: 20px;
 }
 
+.error{
+    color : red;
+}
 .plots img {
     width: 100%;
     max-width: 600px;
