@@ -64,7 +64,8 @@ def get_channel_details(channel_id):
         "total_subscribers": "",
         "total_videos": "",
         "total_views": "",
-        "channel_description": ""
+        "channel_description": "",
+        "country": ""
     }
     try:
         request = youtube.channels().list(part="snippet,statistics", id=channel_id)
@@ -78,6 +79,7 @@ def get_channel_details(channel_id):
         channel_details["total_videos"] = response["items"][0]["statistics"]["videoCount"]
         channel_details["total_views"] = response["items"][0]["statistics"]["viewCount"]
         channel_details["channel_description"] = response["items"][0]["snippet"]["description"]
+        channel_details["country"] = response["items"][0]["snippet"]["country"]
 
     except HttpError as error:
         raise Exception(f"Http Error: {error}")
