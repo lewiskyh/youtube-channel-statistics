@@ -12,16 +12,22 @@
         <input type="text" id="channel_id" name="channel_id">
         <button type="submit">Fetch Data</button>
     </form>
+    {%  if error_message %}
+        <div class="error">
+            <p>{{ error_message }}</p>
+        </div>
+    {% endif %}
     {% if channel_details %}
         <div class="channel-info">
             <h2>Channel: {{ channel_details.channel_name }}</h2>
+            <p>Country: {{ channel_details.country }}</p>
             <p>Description: {{ channel_details.channel_description }}</p>
             <p>Total Videos: {{ channel_details.total_videos }}</p>
             <p>Total Views: {{ channel_details.total_views }}</p>
             <p>Total Subscribers: {{ channel_details.total_subscribers }}</p>
         </div>
     {% endif %}
-    {% if data %}
+    {% if data_html %}
         <div class="plots">
             <h3> Top10 Most Viewed Videos</h3>
             <img src="{{ url_for('static', filename='views_plot.png') }}" alt="Views Plot">
