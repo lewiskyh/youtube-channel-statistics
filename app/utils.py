@@ -65,7 +65,7 @@ def get_channel_details(channel_id):
         "total_videos": "",
         "total_views": "",
         "channel_description": "",
-        "country": ""
+        #"country": ""
     }
     try:
         request = youtube.channels().list(part="snippet,statistics", id=channel_id)
@@ -79,7 +79,7 @@ def get_channel_details(channel_id):
         channel_details["total_videos"] = response["items"][0]["statistics"]["videoCount"]
         channel_details["total_views"] = response["items"][0]["statistics"]["viewCount"]
         channel_details["channel_description"] = response["items"][0]["snippet"]["description"]
-        channel_details["country"] = response["items"][0]["snippet"]["country"]
+        #channel_details["country"] = response["items"][0]["snippet"]["country"]
 
     except HttpError as error:
         raise Exception(f"Http Error: {error}")
@@ -114,6 +114,11 @@ def create_dataframe(channel_id):
     video_ids = get_video_ids(channel_id)
     video_stats = [get_video_stats(id) for id in video_ids]
     df = pd.DataFrame(video_stats, columns=["Title", "Views", "Likes", "Release Date"])
+    ##Remove duplicates
+    df.drop_duplicates(subset="Title", inplace=True, ignore_index=True)
+    ##Save csv file to static folder
+    csv_path = os.path.join("app","static", "channel_stat.csv")
+    df.to_csv(csv_path, index=False)
     return df
 
 
@@ -125,7 +130,7 @@ def trim_title(track_name):
 
 def save_data_plot(df, plot_type="views"):
     if plot_type == "views":
-        top10_df = df.sort_values(by=['Views'], ascending=False)[:10]
+        top10_df = df.sort_values(by=['Views'], ascending=False).head(10)
         top10_df["Title"] = top10_df["Title"].apply(trim_title)
         plt.figure(figsize=(12, 5))
         plt.barh(top10_df['Title'], top10_df["Views"], color="green")
@@ -136,7 +141,7 @@ def save_data_plot(df, plot_type="views"):
         plt.gca().invert_yaxis()
         plot_filename = os.path.join("app", "static", "views_plot.png")
     elif plot_type == "likes":
-        top10_df = df.sort_values(by=['Likes'], ascending=False)[:10]
+        top10_df = df.sort_values(by=['Likes'], ascending=False).head(10)
         top10_df["Title"] = top10_df["Title"].apply(trim_title)
         plt.figure(figsize=(12, 5))
         plt.barh(top10_df['Title'], top10_df["Likes"], color="blue")
