@@ -39,8 +39,8 @@ A web application to analyze YouTube channel statistics and visualize them using
 
     Create a `.env` file in the project root and add your API key:
 
-    ```plaintext
-    echo 'YOUTUBE_API_KEY=your_api_key_here' > .env
+    ```bash
+    echo YOUTUBE_API_KEY=your_api_key_here > .env
     ```
 
 5. **Run the Application**:
