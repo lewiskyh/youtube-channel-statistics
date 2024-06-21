@@ -5,8 +5,8 @@ A web application to analyze YouTube channel statistics and visualize them using
 ## Features
 
 - Fetches and displays statistics of a YouTube channel.
-- Visualizes video statistics using plots.
-- Exports data to CSV files (under development).
+- Visualises video statistics using plots.
+- Exports all video data to CSV files (under development).
 
 ## Prerequisites
 
@@ -19,7 +19,7 @@ A web application to analyze YouTube channel statistics and visualize them using
 
     ```bash
     git clone <repository_url>
-    cd YouTubeChannelAnalytics
+    cd youtube-channel-statistics
     ```
 
 2. **Create and Activate Virtual Environment**:
@@ -32,7 +32,7 @@ A web application to analyze YouTube channel statistics and visualize them using
 3. **Install Dependencies**:
 
     ```bash
-    pip install -r requirements.txt
+    pip3 install -r requirements.txt
     ```
 
 4. **Set Up Environment Variables**:
@@ -68,4 +68,4 @@ A web application to analyze YouTube channel statistics and visualize them using
 
 - Enter a YouTube channel ID in the input field on the home page and submit.
 - View the channel statistics and plots on the dashboard.
-- The data is also saved to a CSV file in the `static` directory.
+- The data is also saved to a CSV file in the `static` directory (under development).
