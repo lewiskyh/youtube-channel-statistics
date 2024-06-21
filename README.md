@@ -71,7 +71,7 @@ A web application to analyze YouTube channel statistics and visualize them using
 
 ## Additional - How to get youtube channel ID
 
-<img src="./screenshots/first-step.png" alt="Alt Text" width="400" height="300">
-<img src="./screenshots/second-step.png" alt="Alt Text" width="400" height="300">
+<img src="./screenshots/first-step.png" alt="Alt Text" width="500" height="300">
+<img src="./screenshots/second-step.png" alt="Alt Text" width="500" height="300">
 
 
