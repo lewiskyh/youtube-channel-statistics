@@ -68,3 +68,10 @@ A web application to analyze YouTube channel statistics and visualize them using
 
 - Enter a YouTube channel ID in the input field on the home page and submit.
 - View the channel statistics and plots on the dashboard.
+
+## Additional - How to get youtube channel ID
+
+<img src="relative/screenshots/Screenshot 2024-06-21 at 11.50.47 AM.png" alt="Alt Text" width="400" height="300">
+<img src="relative/screenshots/Screenshot 2024-06-21 at 11.57.51 AM.png" alt="Alt Text" width="400" height="300">
+
+
