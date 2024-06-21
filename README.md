@@ -57,13 +57,12 @@ A web application to analyze YouTube channel statistics and visualize them using
 
 - `app/`: Contains the main application code.
   - `routes.py`: Defines the application routes.
-  - `utils.py`: Contains utility functions for fetching and processing data.
+  - `utils.py`: Contains utility functions for fetching, processing and visualising data.
   - `templates/`: Contains HTML templates for rendering the web pages.
-  - `static/`: Contains static files such as CSS and images.
+  - `static/`: Contains static files such as CSS and matplot-graphs.
   
 - `requirements.txt`: Lists the Python dependencies.
-- `.env`: Environment variables file (not included in the repository, create manually).
-- `README.md`: This readme file.
+- `.env`: Environment variables file (not included in the repository, need to create manually).
 
 ## Usage
 
