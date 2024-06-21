@@ -1,6 +1,6 @@
 # YouTube Channel Analytics
 
-A web application to analyze YouTube channel statistics and visualize them using various charts.
+A web application to analyze YouTube channel statistics and visualize them using bar charts.
 
 ## Features
 
