@@ -6,7 +6,7 @@ A web application to analyze YouTube channel statistics and visualize them using
 
 - Fetches and displays statistics of a YouTube channel.
 - Visualizes video statistics using plots.
-- Exports data to CSV files.
+- Exports data to CSV files (under development).
 
 ## Prerequisites
 
