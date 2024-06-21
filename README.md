@@ -59,7 +59,7 @@ A web application to analyze YouTube channel statistics and visualize them using
   - `routes.py`: Defines the application routes.
   - `utils.py`: Contains utility functions for fetching, processing and visualising data.
   - `templates/`: Contains HTML templates for rendering the web pages.
-  - `static/`: Contains static files such as CSS and matplot-graphs.
+  - `static/`: Contains static files such as CSS and plots
   
 - `requirements.txt`: Lists the Python dependencies.
 - `.env`: Environment variables file (not included in the repository, need to create manually).
@@ -68,4 +68,3 @@ A web application to analyze YouTube channel statistics and visualize them using
 
 - Enter a YouTube channel ID in the input field on the home page and submit.
 - View the channel statistics and plots on the dashboard.
-- The data is also saved to a CSV file in the `static` directory (under development).
