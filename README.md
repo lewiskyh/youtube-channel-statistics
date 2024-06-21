@@ -11,7 +11,7 @@ A web application to analyze YouTube channel statistics and visualize them using
 ## Prerequisites
 
 - Python 3.x
-- A Google API key with access to the YouTube Data API.
+- A Google API key with access to the YouTube Data API v3.
 
 ## Getting Started
 
